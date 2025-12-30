@@ -15,7 +15,8 @@ export async function downloadImagesAsZip(images) {
 
   const link = document.createElement("a");
   link.href = zipUrl;
-  link.download = "imagens_convertidas.zip";
+  // Name required by spec
+  link.download = "compressed-by-prismify.zip";
   link.click();
 
   URL.revokeObjectURL(zipUrl);

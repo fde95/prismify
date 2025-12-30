@@ -14,62 +14,83 @@ defineEmits([
 
 <template>
     <div class="controls">
-        <label class="controls--format">
-            Formato:
-            <select :value="format" @change="$emit('update:format', $event.target.value)">
-                <option value="webp">WEBP</option>
-                <option value="jpeg">JPEG</option>
-                <option value="png">PNG</option>
-            </select>
-        </label>
+        <div class="controls--itens">
+            <label class="controls--itens--item">
+                <span>
+                    Formato<br />
+                    <small class="controls--itens--item--small-text">Escolha o formato de saída</small>
+                </span>
+                <select :value="format" @change="$emit('update:format', $event.target.value)">
+                    <option value="webp">WEBP - Melhor Compressão
+                    </option>
+                    <option value="jpeg">JPEG - Maior Compatibilidade
+                    </option>
+                    <option value="png">PNG - Sem Perda</option>
+                </select>
+            </label>
+        </div>
 
-        <label class="controls--quality">
-            Qualidade:
-            <input type="range" min="0.1" max="1" step="0.1" :value="quality"
-                @input="$emit('update:quality', Number($event.target.value))" />
-            {{ quality }}
-        </label>
+        <div class="controls--itens">
+            <label class="controls--itens--item">
+                <span>
+                    Qualidade<br />
+                    <small class="controls--itens--item--small-text">Menor = menor arquivo</small>
+                </span>
+                <div class="controls--itens--item--range">
+                    <span class="quality-value">{{ format === 'png' ? 'Original' : Math.round(quality * 100) + '%'
+                    }}</span>
+                    <input type="range" min="0.1" max="1" step="0.1" :value="quality"
+                        @input="$emit('update:quality', Number($event.target.value))" :disabled="format === 'png'" />
+                </div>
+            </label>
+        </div>
 
     </div>
-    <button @click="$emit('convert')" class="controls--button">
-        Converter
-    </button>
 </template>
 <style lang="scss">
 .controls {
     color: white;
     margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    border: 2px solid #ffffff41;
+    border-radius: 1rem;
+    background-color: #ffffff2a;
 
-    &--format {
-        margin-right: 2rem;
-    }
+    &--itens {
 
-    &--button {
-        width: 100%;
-        border-radius: 3rem;
-        padding: .5rem;
-        background-color: #ffffff13;
-        border: 1px solid #ffffff41;
-        color: white;
-        cursor: pointer;
-        transition: ease-in-out .5s;
-        margin-bottom: 2rem;
+        &--item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-        &:hover {
-            background-color: #ffffff33;
+            @media (max-width:767px) {
+                display: block;
+                text-align: center;
+            }
+
+            &--range {
+                @media (max-width:767px) {
+                    margin-top: .5rem;
+                }
+            }
         }
     }
 }
 
 select {
-    padding: .3rem .5rem;
-    margin-left: .5rem;
-    border-radius: 3rem;
-    border-radius: 3rem;
+    padding: .3rem .8rem;
+    border-radius: .6rem;
     background-color: #ffffff13;
     border: 1px solid #ffffff41;
     color: white;
     cursor: pointer;
+
+    @media (max-width:767px) {
+        margin-top: .5rem;
+    }
 }
 
 option {
@@ -81,6 +102,7 @@ input[type="range"] {
     appearance: none;
     background: transparent;
     cursor: pointer;
+    width: 168px;
 }
 
 input[type="range"]:focus {
@@ -106,5 +128,9 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]:focus::-webkit-slider-thumb {
     outline: 3px solid #818381;
     outline-offset: 0.125rem;
+}
+
+.quality-value {
+    margin-right: .8rem;
 }
 </style>

@@ -41,7 +41,7 @@ const currentYear = new Intl.DateTimeFormat(
 
 <style scoped lang="scss">
 .footer {
-    position: fixed;
+    position: relative;
     bottom: 1rem;
     width: 100%;
     z-index: 99999;
@@ -96,52 +96,50 @@ const currentYear = new Intl.DateTimeFormat(
         height: 20px;
         flex-shrink: 0;
     }
-}
 
-// Responsividade
-@media (max-width: 768px) {
-    .footer {
-        padding: 1.5rem 0;
+    @media (max-width: 768px) {
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
 
         &--content {
             flex-direction: column;
             text-align: center;
-            gap: 1.25rem;
+            gap: 0;
         }
 
         &--links {
-            width: 100%;
+            width: 90%;
             justify-content: center;
-            flex-wrap: wrap;
+            display: flex;
+            justify-content: space-around;
+        }
+        &--copyright{
+            font-size: .9rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.39);
+            padding-bottom: .5rem;
         }
 
-        &--link {
-            flex: 1;
-            min-width: 140px;
-            justify-content: center;
-        }
     }
 }
 
-@media (max-width: 480px) {
-    .footer {
-        &--copyright {
-            font-size: 0.875rem;
-        }
+// // Responsividade
+// @media (max-width: 768px) {
+//     .footer {
+//         padding: 0;
 
-        &--link {
-            font-size: 0.875rem;
-            padding: 0.45rem 0.85rem;
+//         &--content {
+//             flex-direction: column;
+//             text-align: center;
+//             gap: 1.25rem;
+//         }
 
-            span {
-                display: none;
-            }
-        }
-
-        &--icon {
-            width: 22px;
-            height: 22px;
-        }
-    }
-}
+//         &--links {
+//             width: 90%;
+//             justify-content: center;
+//             display: flex;
+//             justify-content: space-around;
+//         }
+//     }
+// }
 </style>
