@@ -53,8 +53,8 @@ const totals = computed(() => {
                 </div>
                 <div>
                     <button @click="clearAll" class="imageList--clear btn">
-                        <img src="../assets/icon/trash.webp" alt="icone de lixo" width="16" class="btn--icon">
-                        Limpar
+                        <img src="../assets/icon/rotate-right.webp" alt="icone de lixo" width="16" class="btn--icon">
+                        Enviar novamente
                     </button>
                     <button @click="downloadZip" class="imageList--zipBtn btn">
                         <img src="../assets/icon/download.webp" alt="icone de download" width="16" class="btn--icon">
