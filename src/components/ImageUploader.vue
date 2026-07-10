@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onBeforeUnmount, watch } from "vue";
+import { useI18n } from "vue-i18n";
 
 const props = defineProps({
   showDropzone: { type: Boolean, default: true },
@@ -7,6 +8,7 @@ const props = defineProps({
   resetKey: { type: Number, default: 0 },
 });
 const emit = defineEmits(["images-selected"]);
+const { t } = useI18n();
 
 const files = ref([]); // { file, url }
 
@@ -91,18 +93,18 @@ watch(
           <img
             class="dropzone--content--icon--img"
             src="../assets/icon/upload.webp"
-            alt="Envie suas imagens"
+            :alt="t('uploader.iconAlt')"
             width="32"
             height="32"
             loading="lazy"
           />
         </div>
         <div class="dropzone--content--description">
-          <span><strong>Arraste imagens aqui</strong></span>
           <span
-            ><small
-              >ou clique para selecionar — PNG, JPG, WEBP, GIF</small
-            ></span
+            ><strong>{{ t("uploader.title") }}</strong></span
+          >
+          <span
+            ><small>{{ t("uploader.subtitle") }}</small></span
           >
         </div>
       </div>
@@ -113,10 +115,18 @@ watch(
         v-for="(f, i) in files"
         :key="f.file.name + f.file.size"
         class="previews--preview"
-        title="Clique para remover"
+        :title="t('uploader.removeHint')"
       >
-        <img :src="f.url" alt="preview" class="previews--preview--img" />
-        <button class="remove" @click="removeAt(i)" aria-label="Remover imagem">
+        <img
+          :src="f.url"
+          :alt="t('uploader.previewAlt')"
+          class="previews--preview--img"
+        />
+        <button
+          class="remove"
+          @click="removeAt(i)"
+          :aria-label="t('uploader.removeImage')"
+        >
           ✕
         </button>
         <div

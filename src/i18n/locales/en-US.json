@@ -1,0 +1,63 @@
+{
+  "app": {
+    "metaTitle": "Prismify | Image converter by devfe.com.br",
+    "imageIconAlt": "Image icon",
+    "kicker": "image converter",
+    "titleLine1": "Creation keeps up with your pace",
+    "titleLine2": "with fewer barriers and more flow.",
+    "convertIconAlt": "Image conversion icon",
+    "convert": "Convert",
+    "image": "image",
+    "images": "images"
+  },
+  "language": {
+    "current": "Current language: {language}",
+    "changeTo": "Change language to {language}",
+    "pt-BR": "Portuguese",
+    "en-US": "English",
+    "es-ES": "Spanish"
+  },
+  "uploader": {
+    "iconAlt": "Upload your images",
+    "title": "Drag images here",
+    "subtitle": "or click to select — PNG, JPG, WEBP, GIF",
+    "removeHint": "Click to remove",
+    "previewAlt": "Image preview",
+    "removeImage": "Remove image"
+  },
+  "controls": {
+    "formatLabel": "Format",
+    "formatHelp": "Choose the output format",
+    "qualityLabel": "Quality",
+    "qualityHelp": "Lower = smaller file",
+    "originalQuality": "Original",
+    "formats": {
+      "webp": "WEBP - Best compression",
+      "jpeg": "JPEG - Best compatibility",
+      "png": "PNG - Lossless"
+    }
+  },
+  "results": {
+    "successIconAlt": "Success icon",
+    "convertedSingle": "converted image",
+    "convertedPlural": "converted images",
+    "saved": "Saved",
+    "resetIconAlt": "Upload again icon",
+    "uploadAgain": "Upload again",
+    "downloadIconAlt": "Download icon",
+    "downloadAll": "Download all",
+    "smaller": "smaller",
+    "download": "Download"
+  },
+  "footer": {
+    "copyright": "© DEVFE - Dev Felipe Espinoza",
+    "portfolio": "Portfolio",
+    "visitPortfolio": "Visit portfolio",
+    "visitGithub": "Visit GitHub",
+    "visitLinkedin": "Visit LinkedIn"
+  },
+  "files": {
+    "convertedSuffix": "compressed-by-prismify",
+    "zipName": "prismify-compressed.zip"
+  }
+}

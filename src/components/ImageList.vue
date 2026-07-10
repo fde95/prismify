@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import { downloadImagesAsZip } from "../utils/zipDownloader";
 
 const props = defineProps({
@@ -7,9 +8,10 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["clear"]);
+const { t } = useI18n();
 
 function downloadZip() {
-  downloadImagesAsZip(props.images);
+  downloadImagesAsZip(props.images, t("files.zipName"));
 }
 
 function clearAll() {
@@ -62,14 +64,19 @@ const totals = computed(() => {
         <div class="imageList--header--highlight">
           <img
             src="../assets/icon/check.webp"
-            alt="icone de sucesso"
+            :alt="t('results.successIconAlt')"
             class="imageList--header--highlight--icon"
             width="32"
           />
           <span class="imageList--header--highlight--title"
-            >{{ images.length }} imagens convertidas<br />
+            >{{ images.length }}
+            {{
+              images.length === 1
+                ? t("results.convertedSingle")
+                : t("results.convertedPlural")
+            }}<br />
             <small class="imageList--header--summary"
-              >Economizou {{ formatSize(totals.diff) }}
+              >{{ t("results.saved") }} {{ formatSize(totals.diff) }}
               {{ totals.percent }}%</small
             >
           </span>
@@ -78,20 +85,20 @@ const totals = computed(() => {
           <button @click="clearAll" class="imageList--clear btn">
             <img
               src="../assets/icon/rotate-right.webp"
-              alt="icone de lixo"
+              :alt="t('results.resetIconAlt')"
               width="16"
               class="btn--icon"
             />
-            Enviar novamente
+            {{ t("results.uploadAgain") }}
           </button>
           <button @click="downloadZip" class="imageList--zipBtn btn">
             <img
               src="../assets/icon/download.webp"
-              alt="icone de download"
+              :alt="t('results.downloadIconAlt')"
               width="16"
               class="btn--icon"
             />
-            Baixar Todos
+            {{ t("results.downloadAll") }}
           </button>
         </div>
       </div>
@@ -113,7 +120,7 @@ const totals = computed(() => {
                 >{{ formatSize(img.originalSize) }} → {{ formatSize(img.size) }}
                 <div class="reduction">
                   ({{ Math.round((1 - img.size / img.originalSize) * 100) }}%
-                  menor)
+                  {{ t("results.smaller") }})
                 </div>
               </small>
             </template>
@@ -127,7 +134,7 @@ const totals = computed(() => {
           :href="img.url"
           :download="img.name"
           class="imageList--list--item--btn"
-          >Download</a
+          >{{ t("results.download") }}</a
         >
       </li>
     </ol>

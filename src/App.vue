@@ -1,12 +1,16 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watchEffect } from "vue";
+import { useI18n } from "vue-i18n";
 import ImageUploader from "./components/ImageUploader.vue";
 import ConverterControls from "./components/ConverterControls.vue";
 import ImageList from "./components/ImageList.vue";
+import LanguageSelector from "./components/LanguageSelector.vue";
 import PrismaticBurst from "./components/PrismaticBurst.vue";
 import Footer from "./components/Footer.vue";
 
 import { convertImage } from "./utils/imageConverter";
+
+const { t, locale } = useI18n();
 
 const images = ref([]); // array of File
 const convertedImages = ref([]);
@@ -64,6 +68,7 @@ async function convertImages() {
       file,
       format.value,
       format.value === "png" ? undefined : quality.value,
+      t("files.convertedSuffix"),
     );
 
     convertedImages.value.push(converted);
@@ -80,6 +85,11 @@ async function convertImages() {
   convertingNames.value = [];
   // after conversion we may keep original images list as-is
 }
+
+watchEffect(() => {
+  document.title = t("app.metaTitle");
+  document.documentElement.setAttribute("lang", locale.value);
+});
 </script>
 <template>
   <main class="app-root">
@@ -105,17 +115,20 @@ async function convertImages() {
           <span class="converter--highlight--text"
             ><img
               src="./assets/icon/icon-image.webp"
-              alt="icone de imagem"
+              :alt="t('app.imageIconAlt')"
               width="16"
               style="margin-bottom: -3px"
               loading="lazy"
             />
-            conversor de imagens
+            {{ t("app.kicker") }}
           </span>
+          <div class="converter--toolbar">
+            <LanguageSelector />
+          </div>
         </div>
         <h1 class="converter--title">
-          Onde a criação acompanha o seu ritmo<br />
-          com menos barreiras e mais fluxo.
+          {{ t("app.titleLine1") }}<br />
+          {{ t("app.titleLine2") }}
         </h1>
 
         <div class="converter--content">
@@ -137,14 +150,16 @@ async function convertImages() {
               <button class="controls--button" @click="convertImages">
                 <img
                   src="../src/assets/icon/convert.webp"
-                  alt="Icone de conversão de imagem"
+                  :alt="t('app.convertIconAlt')"
                   width="20"
                   class="controls--button--img"
                 />
-                Converter
+                {{ t("app.convert") }}
                 <span class="counter"
                   >{{ images.length }}
-                  {{ images.length === 1 ? "imagem" : "imagens" }}</span
+                  {{
+                    images.length === 1 ? t("app.image") : t("app.images")
+                  }}</span
                 >
               </button>
             </div>
@@ -166,6 +181,14 @@ async function convertImages() {
   <Footer></Footer>
 </template>
 <style lang="scss">
+.converter {
+  &--toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+  }
+}
+
 .controls {
   &--button {
     width: 100%;

@@ -1,4 +1,9 @@
-export function convertImage(file, format, quality) {
+export function convertImage(
+  file,
+  format,
+  quality,
+  suffix = "compressed-by-prismify",
+) {
   // returns { name, url, size, originalSize }
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -19,7 +24,7 @@ export function convertImage(file, format, quality) {
       ctx.drawImage(img, 0, 0);
 
       // If PNG requested, pass undefined quality so browser keeps default (lossless for PNG)
-      const blobQuality = format === 'png' ? undefined : quality;
+      const blobQuality = format === "png" ? undefined : quality;
 
       canvas.toBlob(
         (blob) => {
@@ -34,7 +39,7 @@ export function convertImage(file, format, quality) {
             return;
           }
 
-          const newName = file.name.replace(/\.\w+$/, `-compressed-by-prismify.${format}`);
+          const newName = file.name.replace(/\.\w+$/, `-${suffix}.${format}`);
 
           resolve({
             name: newName,
@@ -44,7 +49,7 @@ export function convertImage(file, format, quality) {
           });
         },
         `image/${format}`,
-        blobQuality
+        blobQuality,
       );
     };
 

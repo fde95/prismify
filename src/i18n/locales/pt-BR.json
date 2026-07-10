@@ -1,0 +1,63 @@
+{
+  "app": {
+    "metaTitle": "Prismify | Conversor de imagens by devfe.com.br",
+    "imageIconAlt": "Icone de imagem",
+    "kicker": "conversor de imagens",
+    "titleLine1": "Onde a criação acompanha o seu ritmo",
+    "titleLine2": "com menos barreiras e mais fluxo.",
+    "convertIconAlt": "Icone de conversão de imagem",
+    "convert": "Converter",
+    "image": "imagem",
+    "images": "imagens"
+  },
+  "language": {
+    "current": "Idioma atual: {language}",
+    "changeTo": "Mudar idioma para {language}",
+    "pt-BR": "Português",
+    "en-US": "English",
+    "es-ES": "Español"
+  },
+  "uploader": {
+    "iconAlt": "Envie suas imagens",
+    "title": "Arraste imagens aqui",
+    "subtitle": "ou clique para selecionar — PNG, JPG, WEBP, GIF",
+    "removeHint": "Clique para remover",
+    "previewAlt": "Preview da imagem",
+    "removeImage": "Remover imagem"
+  },
+  "controls": {
+    "formatLabel": "Formato",
+    "formatHelp": "Escolha o formato de saída",
+    "qualityLabel": "Qualidade",
+    "qualityHelp": "Menor = menor arquivo",
+    "originalQuality": "Original",
+    "formats": {
+      "webp": "WEBP - Melhor compressão",
+      "jpeg": "JPEG - Maior compatibilidade",
+      "png": "PNG - Sem perda"
+    }
+  },
+  "results": {
+    "successIconAlt": "Icone de sucesso",
+    "convertedSingle": "imagem convertida",
+    "convertedPlural": "imagens convertidas",
+    "saved": "Economizou",
+    "resetIconAlt": "Icone de reenviar",
+    "uploadAgain": "Enviar novamente",
+    "downloadIconAlt": "Icone de download",
+    "downloadAll": "Baixar todos",
+    "smaller": "menor",
+    "download": "Download"
+  },
+  "footer": {
+    "copyright": "© DEVFE - Dev Felipe Espinoza",
+    "portfolio": "Portfólio",
+    "visitPortfolio": "Visitar portfólio",
+    "visitGithub": "Visitar GitHub",
+    "visitLinkedin": "Visitar LinkedIn"
+  },
+  "files": {
+    "convertedSuffix": "comprimido-por-prismify",
+    "zipName": "prismify-comprimidos.zip"
+  }
+}

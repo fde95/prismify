@@ -1,6 +1,9 @@
 import JSZip from "jszip";
 
-export async function downloadImagesAsZip(images) {
+export async function downloadImagesAsZip(
+  images,
+  zipName = "compressed-by-prismify.zip",
+) {
   const zip = new JSZip();
 
   for (const img of images) {
@@ -15,8 +18,7 @@ export async function downloadImagesAsZip(images) {
 
   const link = document.createElement("a");
   link.href = zipUrl;
-  // Name required by spec
-  link.download = "compressed-by-prismify.zip";
+  link.download = zipName;
   link.click();
 
   URL.revokeObjectURL(zipUrl);
