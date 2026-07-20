@@ -24,7 +24,7 @@ const currentYear = computed(() =>
 
       <div class="footer--links">
         <a
-          href="https://portfolio.devfe.com.br/"
+          href="https://www.devfe.com.br/"
           class="footer--link"
           target="_blank"
           rel="noopener noreferrer"
